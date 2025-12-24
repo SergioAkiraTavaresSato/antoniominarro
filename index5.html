@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonio Miñarro | Mentoria de Elite em Supply Chain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #22c55e; /* Verde Lucro */
+            --gold: #fbbf24;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        /* Timer de Urgência */
+        .urgency-bar {
+            background: #b91c1c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 800px; margin: 0 auto 30px; }
+
+        /* Scarcity Box */
+        .scarcity-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        /* CTAs */
+        .cta-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        
+        .btn {
+            padding: 18px 35px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-main { background: var(--primary); color: #000; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2); }
+        .btn-main:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        
+        .btn-whatsapp { background: transparent; border: 2px solid #25d366; color: #25d366; }
+
+        /* Pain Points Grid */
+        .section-title { text-align: center; margin: 80px 0 40px; }
+        .section-title h2 { font-size: 2.5rem; }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .pain-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-left: 4px solid #b91c1c;
+            border-radius: 8px;
+        }
+
+        /* Pricing & Anchoring */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .plan-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .anchor-price {
+            text-decoration: line-through;
+            color: #ef4444;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .actual-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list { list-style: none; padding: 0; margin: 20px 0; font-size: 0.95rem; }
+        .benefits-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .benefits-list li i { color: var(--primary); }
+
+        .footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .plan-card.featured { transform: none; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="urgency-bar">
+    ATENÇÃO: Apenas 2 vagas restantes para o ciclo de Janeiro/2026.
+</div>
+
+<div class="container">
+    <section class="hero">
+        <div class="scarcity-badge">⚠️ Mentoria Exclusiva para PMEs</div>
+        <h1>Sua operação está engolindo o seu lucro?</h1>
+        <p>Transforme o caos do Supply Chain em uma máquina de eficiência com quem liderou operações por 36 anos. <strong>Reduza custos em até 22%</strong> sem precisar contratar um novo gerente sênior.</p>
+        
+        <div class="cta-group">
+            <a href="#precos" class="btn btn-main">Quero Garantir Minha Vaga</a>
+            <a href="https://wa.me/5511992890894" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Falar com Antonio</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">
+            <h2>Por que sua empresa não escala?</h2>
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <h3>Estoque que Sangra</h3>
+                <p>Dinheiro parado em prateleira enquanto falta o produto que o cliente realmente quer.</p>
+            </div>
+            <div class="pain-card">
+                <h3>Fretes de Emergência</h3>
+                <p>Sua margem desaparece pagando urgências por falta de planejamento e processos.</p>
+            </div>
+            <div class="pain-card">
+                <h3>Dono "Bombeiro"</h3>
+                <p>Você passa 90% do tempo resolvendo problemas operacionais em vez de focar na estratégia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: rgba(255,255,255,0.02); padding: 60px 20px; border-radius: 30px; margin-top: 60px;">
+        <div style="text-align: center;">
+            <h2 style="font-size: 2rem;">A Experiência de um COO à sua disposição</h2>
+            <p style="max-width: 700px; margin: 20px auto;">Antonio Miñarro não é um "coach". É um ex-Diretor de Operações que já enfrentou as maiores crises industriais e logísticas do país.</p>
+        </div>
+        <div class="pain-grid" style="margin-top: 40px;">
+            <div style="text-align: center;">
+                <i class="fas fa-check-circle" style="font-size: 2rem; color: var(--primary);"></i>
+                <p>36 anos de campo</p>
+            </div>
+            <div style="text-align: center;">
+                <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--primary);"></i>
+                <p>Resultados Mensuráveis</p>
+            </div>
+            <div style="text-align: center;">
+                <i class="fas fa-handshake" style="font-size: 2rem; color: var(--primary);"></i>
+                <p>Foco em PMEs Reais</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="precos">
+        <div class="section-title">
+            <h2>Invista em Lucro, não em custos</h2>
+            <p>Compare o valor da mentoria com o custo de continuar errando.</p>
+        </div>
+
+        <div class="pricing-table">
+            <div class="plan-card">
+                <span style="color: var(--gold); font-weight: bold;">Plano Essencial</span>
+                <span class="anchor-price">Custo de Consultoria: R$ 25.000</span>
+                <span class="actual-price">R$ 3.500 <small>/mês</small></span>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check"></i> Diagnóstico de Supply Chain</li>
+                    <li><i class="fas fa-check"></i> Organização de Estoque/Compras</li>
+                    <li><i class="fas fa-check"></i> Encontros Estratégicos Mensais</li>
+                </ul>
+                <a href="https://wa.me/5511992890894" class="btn btn-main" style="display: block; text-align: center; font-size: 13px;">Selecionar Este</a>
+            </div>
+
+            <div class="plan-card featured">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; padding: 5px 15px; border-radius: 5px; font-size: 12px; font-weight: bold;">O MELHOR ROI</div>
+                <span style="color: var(--primary); font-weight: bold;">Mentoria Avançada</span>
+                <span class="anchor-price">Salário Gerente Sênior: R$ 18.000+</span>
+                <span class="actual-price">R$ 6.000 <small>/mês</small></span>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check"></i> Tudo do Plano Essencial</li>
+                    <li><i class="fas fa-check"></i> Otimização de Malha Logística</li>
+                    <li><i class="fas fa-check"></i> Redução Direta de Custos Operacionais</li>
+                    <li><i class="fas fa-check"></i> Acompanhamento Próximo</li>
+                </ul>
+                <a href="https://wa.me/5511992890894" class="btn btn-main" style="display: block; text-align: center; font-size: 13px;">Quero Crescer Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="text-align: center; padding-bottom: 100px;">
+        <div style="background: #1e293b; padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+            <h2>Ainda tem dúvidas se é para você?</h2>
+            <p>Se sua empresa fatura acima de R$ 200k/mês e você sente que a operação trava o crescimento, a resposta é sim.</p>
+            <p><strong>Aplicação Seletiva:</strong> Eu não aceito todos os projetos. Só seguimos se eu puder gerar retorno real.</p>
+            <div class="cta-group" style="margin-top: 30px;">
+                <a href="https://wa.me/5511992890894" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Consultar Disponibilidade de Vaga</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="footer">
+    <p>© 2025 Antonio Miñarro — Todos os direitos reservados.</p>
+    <p style="font-size: 12px;">Decisões baseadas em 36 anos de experiência. Resultados variam conforme a implementação.</p>
+</div>
+
+</body>
+</html>
