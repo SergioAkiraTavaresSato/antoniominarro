@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antonio Miñarro — Supply Chain, Governança & Conselho</title>
+  <meta name="description" content="Mentoria e Advisory em Supply Chain e Governança. Estratégia, resiliência e conselho para empresas industriais, familiares e startups." />
+  <style>
+    :root{
+      --bg:#070A12;
+      --panel:#0E1426;
+      --panel2:#0B1020;
+      --text:#E9EEFF;
+      --muted:#AAB3D6;
+      --line:rgba(255,255,255,.10);
+      --brand:#7C5CFF;
+      --brand2:#32D3FF;
+      --ok:#33D69F;
+      --warn:#FFB020;
+      --danger:#FF4D6D;
+      --shadow: 0 14px 50px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,.25), transparent 65%),
+        radial-gradient(900px 450px at 85% 5%, rgba(50,211,255,.18), transparent 60%),
+        radial-gradient(800px 500px at 80% 95%, rgba(51,214,159,.14), transparent 60%),
+        linear-gradient(180deg, #04060E 0%, var(--bg) 35%, #050716 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: rgba(7,10,18,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:220px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 30px rgba(124,92,255,.25);
+    }
+    .brand b{font-size:14px; letter-spacing:.5px}
+    .brand span{display:block; font-size:12px; color:var(--muted); margin-top:1px}
+    nav{display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .navlink{
+      font-size:13px; color:var(--muted);
+      padding:10px 10px; border-radius:12px;
+      border:1px solid transparent;
+    }
+    .navlink:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      border:1px solid rgba(124,92,255,.35);
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(50,211,255,.55));
+      box-shadow: 0 18px 45px rgba(124,92,255,.25);
+    }
+    .btn.primary:hover{border-color: rgba(124,92,255,.65)}
+    .btn.whats{
+      border:1px solid rgba(51,214,159,.35);
+      background: linear-gradient(135deg, rgba(51,214,159,.95), rgba(50,211,255,.40));
+      box-shadow: 0 18px 45px rgba(51,214,159,.18);
+    }
+    .btn.small{padding:10px 12px; border-radius:12px; font-size:13px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .dot{width:8px;height:8px;border-radius:50%}
+    .dot.ok{background:var(--ok)}
+    .dot.warn{background:var(--warn)}
+    .dot.brand{background:var(--brand)}
+    header.hero{padding:44px 0 20px}
+    .heroGrid{
+      display:grid; gap:22px;
+      grid-template-columns: 1.1fr .9fr;
+      align-items:stretch;
+    }
+    .heroCard{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 240px at 25% 10%, rgba(124,92,255,.22), transparent 65%),
+                  radial-gradient(520px 240px at 85% 0%, rgba(50,211,255,.16), transparent 60%);
+      pointer-events:none;
+      z-index:0;
+    }
+    .heroCard > *{position:relative; z-index:1}
+    .h1{
+      font-size:42px; line-height:1.05; margin:14px 0 12px;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size:16px; line-height:1.55; margin:0 0 18px;
+    }
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .metaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .heroSide{
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .sideBox{
+      background: linear-gradient(180deg, rgba(14,20,38,.92), rgba(11,16,32,.92));
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .kpis{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px}
+    .kpi{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .kpi b{display:block; font-size:18px}
+    .kpi span{color:var(--muted); font-size:12px}
+    .badge{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:12px 14px; border-radius: 16px;
+      margin-top:10px;
+    }
+    .badge small{color:var(--muted)}
+    .section{padding:26px 0}
+    .grid2{display:grid; gap:16px; grid-template-columns: 1fr 1fr}
+    .titleRow{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-bottom:12px;
+    }
+    h2{margin:0; font-size:24px; letter-spacing:-.3px}
+    p{margin:0; color:var(--muted); line-height:1.65}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:16px;
+      min-height: 140px;
+    }
+    .card b{display:block; margin-bottom:8px}
+    .card ul{margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.55}
+    .card li{margin:6px 0}
+    .card .tag{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:6px 10px; border-radius:999px;
+    }
+    .pricing{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px;
+    }
+    .plan{
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      position:relative;
+      overflow:hidden;
+    }
+    .plan.featured{
+      border-color: rgba(124,92,255,.40);
+      box-shadow: 0 18px 60px rgba(124,92,255,.22);
+      transform: translateY(-2px);
+    }
+    .plan h3{margin:0; font-size:16px}
+    .plan .desc{margin-top:6px; color:var(--muted); font-size:13px; line-height:1.55}
+    .price{
+      margin-top:12px;
+      display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+    }
+    .price b{font-size:24px}
+    .price s{color:rgba(170,179,214,.55); font-size:13px}
+    .bullets{margin:12px 0 0; padding-left:18px; color:var(--muted); line-height:1.55}
+    .bullets li{margin:7px 0}
+    .plan .actions{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
+    .ribbon{
+      position:absolute; top:14px; right:14px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(124,92,255,.35);
+      background: rgba(124,92,255,.16);
+      color: #EDEBFF;
+      font-size:12px;
+    }
+    .proof{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:14px;
+    }
+    .proof .kpi{min-height:82px}
+    .faq{
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      margin-top:14px;
+    }
+    details{
+      border-top:1px solid var(--line);
+      padding:14px 16px;
+    }
+    details:first-child{border-top:none}
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin-top:10px}
+    footer{
+      padding:28px 0 44px;
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.10);
+      margin-top:18px;
+    }
+    .footGrid{
+      display:grid; gap:14px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:start;
+    }
+    .fine{font-size:12px; color:rgba(170,179,214,.65); line-height:1.55}
+    .contactBox{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius2);
+      padding:16px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .contactLine{
+      display:flex; justify-content:space-between; gap:10px; align-items:center;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      border-radius: 16px;
+      padding:10px 12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .contactLine b{color:var(--text); font-weight:700}
+    .sep{height:1px;background:var(--line); margin:16px 0}
+    .note{
+      border-left:3px solid rgba(255,176,32,.70);
+      padding:10px 12px;
+      border-radius: 12px;
+      background: rgba(255,176,32,.08);
+      color: rgba(233,238,255,.90);
+      font-size:13px;
+      line-height:1.55;
+      margin-top:12px;
+    }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .proof{grid-template-columns:repeat(2,1fr)}
+      .grid2{grid-template-columns:1fr}
+      .footGrid{grid-template-columns:1fr}
+      .h1{font-size:34px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <b>Antonio Miñarro</b>
+            <span>Supply Chain • Governança • Conselho</span>
+          </div>
+        </div>
+
+        <nav aria-label="Navegação">
+          <a class="navlink" href="#ofertas">Ofertas</a>
+          <a class="navlink" href="#metodo">Como atua</a>
+          <a class="navlink" href="#prova">Provas</a>
+          <a class="navlink" href="#faq">FAQ</a>
+          <a class="btn small" href="mailto:eng.minarro@gmail.com?subject=Contato%20-%20Mentoria%20Supply%20Chain%20e%20Governan%C3%A7a&body=Ol%C3%A1%20Antonio%2C%0A%0AQuero%20agendar%20uma%20conversa%20estrat%C3%A9gica.%0A%0AContexto%20da%20empresa%3A%0ADor%20principal%3A%0AObjetivo%20nos%20pr%C3%B3ximos%2090%20dias%3A%0A%0AObrigado(a).">E-mail</a>
+          <a class="btn primary small" href="#contato">Agendar</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="pill">
+            <span class="dot brand"></span>
+            Atuação seletiva • vagas limitadas por agenda
+          </div>
+
+          <div class="h1">Quando a cadeia quebra, não é logística.<br/>É governança.</div>
+
+          <p class="sub">
+            36 anos liderando operações e supply chains críticos. Hoje, apoio CEOs e Conselhos a reduzir
+            risco de ruptura, elevar resiliência e transformar eficiência em continuidade estratégica.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="#contato">Agendar conversa estratégica</a>
+            <a class="btn whats" href="https://wa.me/5511992890894?text=Ol%C3%A1%20Antonio%2C%20vim%20pela%20landing%20page.%20Quero%20tirar%20uma%20d%C3%BAvida%20e%20avaliar%20a%20melhor%20modalidade%20de%20atua%C3%A7%C3%A3o.%20Meu%20contexto%20%C3%A9%3A%20" target="_blank" rel="noopener">Dúvidas no WhatsApp</a>
+            <a class="btn" href="#ofertas">Ver modalidades</a>
+          </div>
+
+          <div class="metaRow">
+            <span class="pill"><span class="dot ok"></span> Supply Chain resiliente</span>
+            <span class="pill"><span class="dot warn"></span> Risco invisível → decisão</span>
+            <span class="pill"><span class="dot brand"></span> Conselho & mentoria</span>
+          </div>
+
+          <div class="note">
+            <b>Importante:</b> não é venda agressiva. É qualificação.
+            Se o cenário não pedir intervenção, a recomendação pode ser “não contratar”.
+          </div>
+        </div>
+
+        <div class="heroSide">
+          <div class="sideBox">
+            <b style="display:block; font-size:14px; margin-bottom:6px;">Sinais de alerta (se você vê 2 ou mais, precisa agir)</b>
+            <p style="margin-top:6px;">
+              KPI verde com reclamação de cliente, atraso recorrente, lead time instável,
+              fornecedor único, dependência geográfica, estoque “caro demais” e “insuficiente ao mesmo tempo”.
+            </p>
+            <div class="kpis">
+              <div class="kpi"><b>36 anos</b><span>indústria & operações</span></div>
+              <div class="kpi"><b>24–36 meses</b><span>mandato premium (board)</span></div>
+              <div class="kpi"><b>Mensal</b><span>entry e advisory</span></div>
+              <div class="kpi"><b>Seletivo</b><span>poucos clientes por ciclo</span></div>
+            </div>
+          </div>
+
+          <div class="sideBox">
+            <b style="display:block; font-size:14px;">Resultado esperado</b>
+            <div class="badge">
+              <div>
+                <b style="display:block; font-size:13px; margin:0;">Decisão mais segura</b>
+                <small>menos ruído • mais método</small>
+              </div>
+              <span class="pill"><span class="dot ok"></span> 30–90 dias</span>
+            </div>
+            <div class="badge">
+              <div>
+                <b style="display:block; font-size:13px; margin:0;">Resiliência operacional</b>
+                <small>ruptura vira exceção</small>
+              </div>
+              <span class="pill"><span class="dot brand"></span> 90–180 dias</span>
+            </div>
+            <div class="badge">
+              <div>
+                <b style="display:block; font-size:13px; margin:0;">Governança e conselho</b>
+                <small>continuidade + recorrência</small>
+              </div>
+              <span class="pill"><span class="dot warn"></span> 12+ meses</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problema / tensão -->
+  <section class="section" id="metodo">
+    <div class="wrap">
+      <div class="titleRow">
+        <h2>O problema invisível</h2>
+        <span class="pill"><span class="dot warn"></span> eficiência ≠ resiliência</span>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <b>O que quase ninguém mede</b>
+          <ul>
+            <li>Dependência crítica de fornecedor / país / rota</li>
+            <li>Lead time “bom” que degrada sob stress</li>
+            <li>Risco de compliance, ESG e reputação na cadeia</li>
+            <li>Capacidade oculta (gargalos) e “estoque ilusório”</li>
+          </ul>
+        </div>
+        <div class="card">
+          <b>O que normalmente acontece</b>
+          <ul>
+            <li>KPIs verdes escondem risco estrutural</li>
+            <li>Decisões operacionais sem leitura de cenário</li>
+            <li>Custos sobem “do nada”, serviço cai, time apaga incêndio</li>
+            <li>Ruptura aparece primeiro no cliente, depois no caixa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cards" style="margin-top:14px;">
+        <div class="card">
+          <span class="tag"><span class="dot brand"></span> Camada 1</span>
+          <b style="margin-top:10px;">Ativação & Qualificação</b>
+          <p>Abre portas, gera confiança e cria clareza do cenário. Porta de entrada para ofertas maiores.</p>
+        </div>
+        <div class="card">
+          <span class="tag"><span class="dot warn"></span> Camada 2</span>
+          <b style="margin-top:10px;">Mentoria Executiva & Advisory</b>
+          <p>Ritual mensal para decisões sob incerteza e construção de resiliência com método.</p>
+        </div>
+        <div class="card">
+          <span class="tag"><span class="dot ok"></span> Camada 3</span>
+          <b style="margin-top:10px;">Governança & Conselho (Premium)</b>
+          <p>Trava relacionamento, influência e recorrência. Curadoria de conselho e atuação estratégica contínua.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provas / autoridade -->
+  <section class="section" id="prova">
+    <div class="wrap">
+      <div class="titleRow">
+        <h2>Autoridade que reduz o risco da decisão</h2>
+        <span class="pill"><span class="dot ok"></span> prova antes da proposta</span>
+      </div>
+      <p>
+        A landing page não é currículo: é filtro. Aqui entram apenas os fatos que sustentam a decisão de agenda.
+      </p>
+
+      <div class="proof">
+        <div class="kpi"><b>36 anos</b><span>Supply Chain & Operações</span></div>
+        <div class="kpi"><b>Indústria 4.0</b><span>automação e modernização</span></div>
+        <div class="kpi"><b>Pandemia</b><span>resposta a ruptura global</span></div>
+        <div class="kpi"><b>Governança</b><span>conselho e comitês</span></div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <b>Execução real</b>
+          <p>Do chão de fábrica à diretoria, conectando compras, manufatura, logística, automação e planejamento.</p>
+        </div>
+        <div class="card">
+          <b>Ambiente de alta pressão</b>
+          <p>Negociação sindical no ABC, estabilidade produtiva e responsabilidade com pessoas e negócio.</p>
+        </div>
+        <div class="card">
+          <b>Visão sistêmica</b>
+          <p>Resiliência, governança e cadeia antifrágil como vantagem competitiva — não como “projeto”.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ofertas / preços (ancoragem) -->
+  <section class="section" id="ofertas">
+    <div class="wrap">
+      <div class="titleRow">
+        <h2>Modalidades de atuação</h2>
+        <span class="pill"><span class="dot brand"></span> ancoragem por valor • não por hora</span>
+      </div>
+      <p>
+        Você escolhe a camada. Se o diagnóstico mostrar que “não é agora”, a recomendação será objetiva.
+        Atuação seletiva para preservar qualidade e foco.
+      </p>
+
+      <div class="pricing">
+        <!-- Plan 1 -->
+        <div class="plan">
+          <h3>Camada 1 — Entry | Early Strategic Advisory</h3>
+          <div class="desc">Porta de entrada. Qualificação e observação estratégica mensal.</div>
+          <div class="price">
+            <b>R$ (sob proposta)</b>
+            <s>R$ (âncora: consultoria tradicional)</s>
+          </div>
+          <ul class="bullets">
+            <li>Diagnóstico orientado a decisão (não relatório longo)</li>
+            <li>Mapeamento de risco invisível e dependências críticas</li>
+            <li>Plano de próximos passos (30–90 dias)</li>
+            <li><b>Regra:</b> seletivo. Sem venda agressiva.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="#contato">Quero começar por aqui</a>
+            <a class="btn" href="mailto:eng.minarro@gmail.com?subject=Camada%201%20-%20Entry%20Strategic%20Advisory&body=Ol%C3%A1%20Antonio%2C%0A%0AQuero%20a%20Camada%201%20(Entry).%0AContexto%3A%0ADor%3A%0AObjetivo%3A%0A%0AObrigado(a).">Pedir proposta</a>
+          </div>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="plan featured">
+          <div class="ribbon">Mais escolhido</div>
+          <h3>Camada 2 — Mentoria Executiva & Advisory</h3>
+          <div class="desc">Ritual mensal para decisões sob incerteza e resiliência operacional.</div>
+          <div class="price">
+            <b>R$ (sob proposta)</b>
+            <s>R$ (âncora: consultoria por projeto)</s>
+          </div>
+          <ul class="bullets">
+            <li>Mentoria mensal com foco em trade-offs (custo × serviço × risco)</li>
+            <li>Critérios para decisão (não “achismo”) e priorização</li>
+            <li>Plano de execução com indicadores e checkpoints</li>
+            <li>Suporte assíncrono para dúvidas críticas do ciclo</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="#contato">Agendar conversa</a>
+            <a class="btn whats" href="https://wa.me/5511992890894?text=Ol%C3%A1%20Antonio%2C%20quero%20a%20Camada%202%20(Mentoria%20Executiva%20%26%20Advisory).%20Meu%20contexto%20%C3%A9%3A%20" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="plan">
+          <h3>Camada 3 — Boardcraft | Governança & Conselho (Premium)</h3>
+          <div class="desc">Curadoria de conselho, estruturação de governança e atuação estratégica contínua.</div>
+          <div class="price">
+            <b>Mandato 24–36 meses</b>
+            <s>R$ (âncora: custo de ruptura + retrabalho)</s>
+          </div>
+          <ul class="bullets">
+            <li>Estruturação de governança e ritos decisórios</li>
+            <li>Curadoria do conselho (composição, lacunas e perfis)</li>
+            <li>Blindagem comercial (menos esforço de venda)</li>
+            <li><b>Produto nobre:</b> poucas aberturas por ano</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="#contato">Quero avaliar o Premium</a>
+            <a class="btn" href="mailto:eng.minarro@gmail.com?subject=Camada%203%20-%20Boardcraft%20Premium&body=Ol%C3%A1%20Antonio%2C%0A%0AQuero%20avaliar%20a%20Camada%203%20(Boardcraft%20Premium).%0AContexto%20da%20empresa%3A%0AEst%C3%A1gio%3A%0ADor%20principal%3A%0AObjetivo%20(12%20meses)%3A%0A%0AObrigado(a).">Solicitar avaliação</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <b>Escassez real:</b> a capacidade de agenda é limitada para manter profundidade. Se o fit não existir, você recebe direcionamento e encerra sem pressão.
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="titleRow">
+        <h2>Perguntas rápidas (sem enrolação)</h2>
+        <span class="pill"><span class="dot warn"></span> clareza reduz risco</span>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>Isso é consultoria ou mentoria? <span style="color:var(--muted)">+</span></summary>
+          <p>É <b>advisory com método</b>. Mentoria quando o foco é decisão e evolução executiva; consultoria só entra se houver escopo claro de execução. O objetivo é reduzir risco e acelerar decisões certas.</p>
+        </details>
+        <details>
+          <summary>Serve para empresas pequenas? <span style="color:var(--muted)">+</span></summary>
+          <p>Serve se houver <b>cadeia crítica</b>, crescimento, reorganização ou risco de ruptura. Se não houver fit, a recomendação pode ser “não contratar”.</p>
+        </details>
+        <details>
+          <summary>Quanto custa? <span style="color:var(--muted)">+</span></summary>
+          <p>O investimento é <b>sob proposta</b> porque depende do nível de criticidade, objetivos e camada escolhida. A âncora é o custo real de ruptura: perda de receita, retrabalho, penalidades e erosão de confiança.</p>
+        </details>
+        <details>
+          <summary>Qual o primeiro passo? <span style="color:var(--muted)">+</span></summary>
+          <p>Agende a conversa estratégica. Você envia contexto (dor + objetivo + restrições) e sai com: diagnóstico inicial, recomendação e próximos passos.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="section" id="contato">
+    <div class="wrap">
+      <div class="titleRow">
+        <h2>Agende ou tire dúvidas agora</h2>
+        <span class="pill"><span class="dot ok"></span> resposta direta</span>
+      </div>
+
+      <div class="grid2">
+        <div class="heroCard" style="padding:20px;">
+          <b style="display:block; font-size:16px;">Mensagem curta que converte (copiar/colar)</b>
+          <p style="margin-top:8px;">
+            “Antonio, estou vendo sinais de risco/ruptura na minha cadeia. Quero entender se a Camada 1, 2 ou 3 é a ideal.
+            Contexto: ___ • Dor: ___ • Objetivo (90 dias): ___.”
+          </p>
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn whats" href="https://wa.me/5511992890894?text=Antonio%2C%20estou%20vendo%20sinais%20de%20risco%2Fruptura%20na%20minha%20cadeia.%20Quero%20entender%20se%20a%20Camada%201%2C%202%20ou%203%20%C3%A9%20a%20ideal.%20Contexto%3A%20____%20%7C%20Dor%3A%20____%20%7C%20Objetivo%20(90%20dias)%3A%20____" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+            <a class="btn primary" href="mailto:eng.minarro@gmail.com?subject=Agendamento%20-%20Conversa%20Estrat%C3%A9gica&body=Ol%C3%A1%20Antonio%2C%0A%0AQuero%20agendar%20uma%20conversa%20estrat%C3%A9gica.%0A%0AContexto%3A%0ADor%3A%0AObjetivo%20(90%20dias)%3A%0AJanela%20de%20hor%C3%A1rio%3A%0A%0AObrigado(a).">Agendar por e-mail</a>
+          </div>
+          <div class="sep"></div>
+          <p class="fine">
+            <b>Nota:</b> atuação seletiva. Se não houver fit, você recebe direcionamento e encerra sem pressão.
+          </p>
+        </div>
+
+        <div class="contactBox">
+          <div class="contactLine">
+            <span>Email</span>
+            <b>eng.minarro@gmail.com</b>
+          </div>
+          <div class="contactLine">
+            <span>WhatsApp</span>
+            <b>+55 11 99289-0894</b>
+          </div>
+          <div class="contactLine">
+            <span>LinkedIn</span>
+            <b>/in/antonio-minarro…</b>
+          </div>
+
+          <div class="note">
+            <b>Filtro inteligente:</b> se sua empresa está em reorganização, crescimento acelerado,
+            ou sente instabilidade em prazos/insumos/qualidade, a conversa tende a gerar clareza imediata.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footGrid">
+        <div>
+          <b style="display:block; margin-bottom:8px;">Antonio Miñarro</b>
+          <p class="fine">
+            Supply Chain • Operações • Governança • Conselho • Mentoria Executiva<br/>
+            © <span id="y"></span> • Página institucional • Uso recomendado: domínio próprio + pixel/analytics
+          </p>
+        </div>
+        <div>
+          <div class="ctaRow" style="justify-content:flex-end">
+            <a class="btn" href="#ofertas">Ver modalidades</a>
+            <a class="btn primary" href="#contato">Agendar</a>
+          </div>
+          <p class="fine" style="text-align:right; margin-top:10px;">
+            “Decisão segura é aquela que sobrevive ao stress do mundo real.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
